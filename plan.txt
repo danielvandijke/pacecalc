@@ -1,0 +1,25 @@
+So what should the pacecalc do exactly?
+- Take in the date
+Step 1: take in the unit of distance
+Step 2: take in the length of the distance (in either m or km)
+Step 3: take in the time it took (first minutes then second
+- Convert the minutes and seconds to minutes and a decimal of minutes
+- multiply this by the length of distance to calculate the pace
+- split the pace which will be in minutes only back into minutes and seconds
+- print out the minutes
+- ask for a confirmation to save
+- if yes, save to a spreadsheet or .txt file or something
+
+What is the general process you do on your own?
+You... 
+convert the time you ran into minute.decimal
+you then divide the distance you ran by 
+
+So you ran a 10K in 55:35
+So... that means you ran a time of 55:0.58333
+
+55.
+
+Saving the times to a spreadsheet can be done but idk how to open something that isn't in the same 
+folder as the .c file you are reading into.
+

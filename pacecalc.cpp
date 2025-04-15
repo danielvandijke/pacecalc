@@ -7,6 +7,8 @@
 #include <string>
 #include <sstream>
 #include <format>
+#include <fstream>
+#include <vector>
 
 constexpr float MILES_TO_KM = 1.60934f;
 constexpr float KM_TO_MILES = 0.621371f;
@@ -144,4 +146,31 @@ int main()
     Time run_duration = parse_run_time_input(run_time_input);
     RunData run_data = RunData(distance, distance_unit, run_duration);
     print_results(date, run_data);
+
+    std::vector<std::vector<std::string>> data = {
+        {"Name", "Age", "City"},
+        {"Alice", "30", "New York"},
+        {"Bob", "25", "Los Angeles"},
+        {"Charlie", "35", "Chicago"}
+    };
+
+    // Open a file to write to
+    std::ofstream file("output.csv");
+
+    if (file.is_open()) {
+        // Loop through the data and write it to the file
+        for (const auto& row : data) {
+            for (size_t i = 0; i < row.size(); ++i) {
+                file << row[i];
+                if (i != row.size() - 1) {
+                    file << ","; // Add a comma between elements
+                }
+            }
+            file << "\n"; // Newline after each row
+        }
+        file.close(); // Close the file
+        std::cout << "Data written to output.csv successfully!" << std::endl;
+    } else {
+        std::cout << "Error opening the file!" << std::endl;
+    }
 }

@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <string>
 #include <sstream>
+#include <format>
 
 constexpr float MILES_TO_KM = 1.60934f;
 constexpr float KM_TO_MILES = 0.621371f;
@@ -105,12 +106,13 @@ Time calculate_pace(Time run_time, float dist){
 }
 
 class RunData {
-    Time run_duration;
-    DistanceAndPace km_data;
-    DistanceAndPace mile_data;
+    private: 
+        Time run_duration;
+        DistanceAndPace km_data;
+        DistanceAndPace mile_data;
 
     public:
-        RunData(float distance, char distance_unit, Time run_duration)
+        RunData(float distance, const char distance_unit, Time run_duration)
         : run_duration(run_duration) {
             if (distance_unit == 'm'){
                distance *= MILES_TO_KM;
@@ -124,17 +126,12 @@ class RunData {
         const DistanceAndPace& getMileData() const{ return mile_data; }
 
         string to_string() const {
-            stringstream result;
-            result << "you ran " << fixed << setprecision(2) << km_data.distance << " kilometers or " 
-            << fixed << setprecision(2) << mile_data.distance << " miles " 
-            << "in a time of " << run_duration.to_string() 
-            << " at a pace of " << km_data.pace.to_string() << " per kilometer or " 
-            << mile_data.pace.to_string() << " per mile.";
-            return result.str();
+            return std::format("you ran {:.2f} kilometers or {:.2f} miles in a time of {} at a pace of {} per kilometer or {} per mile.",
+                km_data.distance, mile_data.distance, run_duration.to_string(), km_data.pace.to_string(), mile_data.pace.to_string());
         }
 };
 
-void print_results(string date, RunData& run_data){
+void print_results(const string& date, const RunData& run_data){
     cout << "\nOn " << date << ", " << run_data.to_string();
 }
 

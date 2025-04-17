@@ -1,0 +1,62 @@
+# Compiled object files, static libraries, and executables
+*.o
+*.a
+*.so
+*.dll
+*.exe
+*.out
+*.app
+
+# Compiled dynamic libraries
+*.dylib
+*.so
+*.dll
+
+# Backup files
+*~ 
+# MacOS
+.DS_Store
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# IDE-specific files
+# Visual Studio
+.vs/
+.vscode/
+*.vcxproj
+*.vcxproj.filters
+.vs2017/
+.vs2019/
+
+# Xcode
+xcuserdata/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeData.txt
+*.cmake
+
+# Makefile
+Makefile
+Makefile.in
+Makefile.am
+*.make
+
+# Visual Studio Code
+.vscode/
+
+# Build
+build/
+
+# Other build systems
+# Eclipse
+.project
+.cproject
+# Code::Blocks
+*.cbp
+*.layout
+
+# CLion
+.idea/

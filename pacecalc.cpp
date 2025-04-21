@@ -169,14 +169,30 @@ bool wants_to_save_to_csv(){
     return input == "Y";
 }
 
-void save_to_csv(const RunData& data){
+bool file_exists(const string& file_name){
+    struct stat buffer;
+    return stat(file_name.c_str(), &buffer) == 0 && buffer.st_size > 0;
+}
+
+void create_run_data_csv_with_header(const string& file_name){
     std::ofstream file("output.csv");
     if (!file.is_open()){
         throw runtime_error("Failed to open file");
     }
-
     file << "date,run duration,km,minute km,mile,minute mile\n";
-    file << data.to_csv_row();
+    file.close();
+    return;
+}
+
+void save_to_csv(const RunData& data){
+    if (!file_exists("output.csv")){
+        create_run_data_csv_with_header("output.csv");
+    }
+    std::ofstream file("output.csv", std::ios::app);
+    if (!file.is_open()){
+        throw runtime_error("Failed to open file");
+    }
+    file << data.to_csv_row() << "\n";
     file.close();
     cout << "Successfully saved run data to CSV!" << endl;
 }

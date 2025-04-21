@@ -8,5 +8,6 @@ add_executable(Pacecalc
     time.cpp
     date.cpp
     run_data.cpp
+    csv_utils.cpp
     main.cpp
 )

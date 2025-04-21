@@ -1,7 +1,8 @@
+#pragma once
 #include "time.hpp"
 #include "date.hpp"
 #include <string>
-#pragma once
+
 
 struct DistanceAndPace {
     float distance;
